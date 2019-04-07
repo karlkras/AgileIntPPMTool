@@ -6,7 +6,6 @@ import com.llts.ppmtool.repositorires.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class ProjectService {
@@ -38,5 +37,10 @@ public class ProjectService {
 
     public Iterable<Project> findAllProjects() {
         return projectRepository.findAll();
+    }
+
+    public void deleteProject(String id) {
+        Project project = this.findProjectByIdentifier(id);
+        projectRepository.delete(project);
     }
 }
