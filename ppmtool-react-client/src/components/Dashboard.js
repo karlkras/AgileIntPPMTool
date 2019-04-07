@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
+import ProjectItem from './Project/ProjectItem';
 
 class Dashboard extends Component {
   static propTypes = {
@@ -10,6 +11,7 @@ class Dashboard extends Component {
     return (
       <Fragment>
         <h1>Welcome To the Dashboard</h1>
+        <ProjectItem />
       </Fragment>
     )
   }
