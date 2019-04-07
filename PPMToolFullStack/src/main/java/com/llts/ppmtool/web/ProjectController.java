@@ -46,4 +46,9 @@ public class ProjectController {
         return new ResponseEntity<>(project, HttpStatus.OK);
     }
 
+    @GetMapping("")
+    public Iterable<Project> getAll(){
+        return projectService.findAllProjects();
+    }
+
 }
