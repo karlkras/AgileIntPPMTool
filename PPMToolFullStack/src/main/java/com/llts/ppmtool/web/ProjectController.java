@@ -1,6 +1,7 @@
 package com.llts.ppmtool.web;
 
 import com.llts.ppmtool.domain.Project;
+import com.llts.ppmtool.services.ErrorService;
 import com.llts.ppmtool.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,23 +24,19 @@ public class ProjectController {
     @Autowired
     private ProjectService projectService;
 
+    @Autowired
+    private ErrorService errorService;
+
     @PostMapping("")
     public ResponseEntity<?> createNewProject(
             @Valid
             @RequestBody Project project,
             BindingResult result) {
-        if(result.hasErrors()) {
 
-            List<FieldError> fieldErrorList = result.getFieldErrors();
+        ResponseEntity<?> errors = errorService.getErrors(result);
 
-            Map<String, String> errorMap = new HashMap<>();
-
-            for(FieldError fe : fieldErrorList) {
-                errorMap.put(fe.getField(), fe.getDefaultMessage());
-            }
-
-            return new ResponseEntity<>(errorMap,
-                            HttpStatus.BAD_REQUEST);
+        if(errors != null){
+            return errors;
         }
 
         projectService.saveOrUpdateProject(project);
