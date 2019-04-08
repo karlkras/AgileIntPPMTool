@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 const CreateProjectButton = () => {
@@ -8,9 +8,7 @@ const CreateProjectButton = () => {
         Create a Project
       </Link>
     </Fragment>
-  )
-}
+  );
+};
 
-export default CreateProjectButton
-
-
+export default CreateProjectButton;
