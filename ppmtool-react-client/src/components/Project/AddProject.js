@@ -5,9 +5,6 @@ import classnames from "classnames";
 import {createProject} from "../../actions/projectActions";
 
 class AddProject extends Component {
-  static generateProject(state) {
-    return JSON.stringify({...state});
-  }
 
   constructor(props) {
     super(props);
